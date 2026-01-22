@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formation IA – Guide Formateur</title>
+    <title>Formation IA – Guide Formateur – DRANE PACA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -38,23 +38,24 @@
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
-            padding: 2rem 3rem;
+            padding: 2.5rem 3rem;
             text-align: center;
         }
         .header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 0.3rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
         }
         .header .subtitle {
             color: var(--warm);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 500;
+            letter-spacing: 1px;
         }
 
         /* Container principal */
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -65,7 +66,7 @@
             color: white;
             padding: 1rem 1.5rem;
             border-radius: 10px 10px 0 0;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -84,26 +85,26 @@
         }
         .part-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-        }
-        .part-time {
-            margin-left: auto;
-            background: var(--warm);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 1.4rem;
         }
 
+        /* Alignement des tuiles en Grille */
         .part-content {
             background: white;
             border: 1px solid var(--border);
             border-top: none;
             border-radius: 0 0 10px 10px;
-            padding: 1rem;
+            padding: 1.5rem;
             display: grid;
-            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .part-content {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Tuiles */
@@ -112,9 +113,10 @@
             border-radius: 8px;
             overflow: hidden;
             background: white;
+            height: fit-content;
         }
         .tile-header {
-            padding: 0.9rem 1.1rem;
+            padding: 1rem 1.25rem;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -129,12 +131,6 @@
         }
         .tile-icon { font-size: 1.2rem; }
         .tile-title { flex: 1; }
-        .tile-time {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 400;
-        }
         .tile-chevron {
             font-size: 0.7rem;
             transition: transform 0.3s ease;
@@ -156,7 +152,6 @@
             margin-top: 0.75rem;
             overflow: hidden;
         }
-        .subtile:first-child { margin-top: 0; }
         .subtile-header {
             padding: 0.7rem 1rem;
             cursor: pointer;
@@ -167,16 +162,7 @@
             font-size: 0.9rem;
             color: var(--primary-light);
             background: #f8fafc;
-            transition: background 0.2s ease;
         }
-        .subtile-header:hover { background: #edf2f7; }
-        .subtile-chevron {
-            margin-left: auto;
-            font-size: 0.6rem;
-            transition: transform 0.3s ease;
-            color: var(--text-light);
-        }
-        .subtile.open .subtile-chevron { transform: rotate(180deg); }
         .subtile-content {
             display: none;
             padding: 1rem;
@@ -184,14 +170,16 @@
             font-size: 0.9rem;
         }
         .subtile.open .subtile-content { display: block; }
+        .subtile.open .subtile-chevron { transform: rotate(180deg); }
+        .subtile-chevron { margin-left: auto; font-size: 0.6rem; transition: transform 0.3s ease; }
 
-        /* Contenu */
+        /* Éléments de contenu */
         .key-points { display: grid; gap: 0.5rem; }
         .key-point {
             display: flex;
             align-items: flex-start;
             gap: 0.5rem;
-            padding: 0.5rem 0.75rem;
+            padding: 0.6rem 0.8rem;
             background: #f7fafc;
             border-radius: 6px;
             border-left: 3px solid var(--primary-light);
@@ -201,289 +189,56 @@
         .key-point.warning { border-left-color: var(--warning); background: #fffaf0; }
         .key-point.danger { border-left-color: var(--accent); background: #fff5f5; }
         .key-point.purple { border-left-color: var(--purple); background: #faf5ff; }
-        .key-point-icon { font-size: 0.95rem; flex-shrink: 0; }
-        .key-point strong { color: var(--primary); }
 
-        /* Tableaux */
-        .table-wrapper {
-            overflow-x: auto;
-            margin: 0.75rem 0;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
+        .table-wrapper { overflow-x: auto; margin: 0.75rem 0; border: 1px solid var(--border); border-radius: 6px; }
         table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        th {
-            background: var(--primary);
-            color: white;
-            padding: 0.6rem 0.75rem;
-            text-align: left;
-            font-weight: 600;
-        }
-        td {
-            padding: 0.6rem 0.75rem;
-            border-bottom: 1px solid var(--border);
-            vertical-align: top;
-        }
-        tr:last-child td { border-bottom: none; }
-        tr:nth-child(even) { background: #f8fafc; }
-        .level-tag {
-            display: inline-block;
-            padding: 0.1rem 0.35rem;
-            border-radius: 3px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        .level-base { background: #e2e8f0; color: #4a5568; }
-        .level-mid { background: #bee3f8; color: #2b6cb0; }
-        .level-high { background: #c6f6d5; color: #276749; }
-        .level-top { background: #faf089; color: #975a16; }
+        th { background: var(--primary); color: white; padding: 0.6rem; text-align: left; }
+        td { padding: 0.6rem; border-bottom: 1px solid var(--border); }
+        .level-tag { padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+        .level-base { background: #e2e8f0; } .level-mid { background: #bee3f8; } .level-high { background: #c6f6d5; } .level-top { background: #faf089; }
 
-        /* Alertes */
-        .alert {
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            margin: 0.75rem 0;
-            display: flex;
-            gap: 0.5rem;
-            align-items: flex-start;
-            font-size: 0.9rem;
-        }
-        .alert:first-child { margin-top: 0; }
-        .alert-icon { font-size: 1.1rem; flex-shrink: 0; }
-        .alert-danger { background: #fff5f5; border: 1px solid #fc8181; }
-        .alert-warning { background: #fffaf0; border: 1px solid #f6ad55; }
-        .alert-info { background: #ebf8ff; border: 1px solid #63b3ed; }
-        .alert-success { background: #f0fff4; border: 1px solid #68d391; }
+        .alert { padding: 0.75rem 1rem; border-radius: 6px; margin: 0.75rem 0; display: flex; gap: 0.5rem; font-size: 0.9rem; border: 1px solid transparent; }
+        .alert-info { background: #ebf8ff; border-color: #63b3ed; }
+        .alert-success { background: #f0fff4; border-color: #68d391; }
+        .alert-warning { background: #fffaf0; border-color: #f6ad55; }
+        .alert-danger { background: #fff5f5; border-color: #fc8181; }
 
-        /* Prompts */
-        .prompt-box {
-            background: #1a202c;
-            color: #e2e8f0;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            line-height: 1.5;
-            margin: 0.6rem 0;
-            overflow-x: auto;
-        }
-        .prompt-box .variable { color: var(--warm); }
+        .prompt-box { background: #1a202c; color: #e2e8f0; padding: 0.75rem; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; margin: 0.6rem 0; }
+        .variable { color: var(--warm); }
 
-        /* Outils */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 0.6rem;
-            margin: 0.5rem 0;
-        }
-        .tool-card {
-            padding: 0.7rem;
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            text-align: center;
-        }
-        .tool-card.european {
-            border-color: #3182ce;
-            background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
-        }
-        .tool-card.specialized {
-            border-color: var(--purple);
-            background: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);
-        }
-        .tool-name { font-weight: 600; color: var(--primary); font-size: 0.85rem; }
-        .tool-type { font-size: 0.7rem; color: var(--text-light); }
-        .tool-badge {
-            display: inline-block;
-            margin-top: 0.3rem;
-            padding: 0.1rem 0.35rem;
-            background: #3182ce;
-            color: white;
-            font-size: 0.6rem;
-            font-weight: 600;
-            border-radius: 3px;
-        }
-        .tool-badge.purple { background: var(--purple); }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.6rem; margin-top: 0.5rem; }
+        .tool-card { padding: 0.7rem; background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; text-align: center; }
+        .tool-card.european { border-color: #3182ce; background: #ebf8ff; }
+        .tool-card.specialized { border-color: var(--purple); background: #faf5ff; }
+        .tool-name { font-weight: 600; font-size: 0.85rem; color: var(--primary); }
+        .tool-badge { font-size: 0.6rem; padding: 0.1rem 0.3rem; background: var(--primary); color: white; border-radius: 3px; display: inline-block; margin-top: 0.3rem; }
 
-        /* Ressources */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 0.6rem;
-        }
-        .resource-link {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.7rem;
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            text-decoration: none;
-            color: var(--text);
-            transition: all 0.2s ease;
-            font-size: 0.85rem;
-        }
-        .resource-link:hover {
-            border-color: var(--primary-light);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .resource-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--primary);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-        .resource-title { font-weight: 600; color: var(--primary); font-size: 0.8rem; }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.6rem; }
+        .resource-link { display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem; background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; text-decoration: none; color: inherit; transition: 0.2s; }
+        .resource-link:hover { border-color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .resource-icon { width: 30px; height: 30px; background: var(--primary); color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .resource-title { font-weight: 600; font-size: 0.85rem; color: var(--primary); }
         .resource-desc { font-size: 0.7rem; color: var(--text-light); }
 
-        /* Compétences */
-        .competence-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-        .competence-item {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 0.5rem;
-            text-align: center;
-        }
-        .competence-icon { font-size: 1.2rem; }
-        .competence-name { font-weight: 600; font-size: 0.75rem; color: var(--primary); }
+        .badges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.6rem; margin: 0.75rem 0; }
+        .badge-card { padding: 0.6rem; border-radius: 8px; text-align: center; border: 2px solid; }
+        .badge-card.green { border-color: #48bb78; background: #f0fff4; }
+        .badge-card.blue { border-color: #4299e1; background: #ebf8ff; }
+        .badge-card.yellow { border-color: #ecc94b; background: #fffff0; }
+        .badge-card.purple { border-color: #9f7aea; background: #faf5ff; }
+        .badge-card.orange { border-color: #ed8936; background: #fffaf0; }
+        .badge-name { font-weight: 700; font-size: 0.8rem; }
 
-        /* Badges IA */
-        .badges-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 0.6rem;
-            margin: 0.75rem 0;
-        }
-        .badge-card {
-            padding: 0.75rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 2px solid;
-        }
-        .badge-card.green { background: #f0fff4; border-color: #48bb78; }
-        .badge-card.blue { background: #ebf8ff; border-color: #4299e1; }
-        .badge-card.yellow { background: #fffff0; border-color: #ecc94b; }
-        .badge-card.purple { background: #faf5ff; border-color: #9f7aea; }
-        .badge-card.orange { background: #fffaf0; border-color: #ed8936; }
-        .badge-icon { font-size: 1.5rem; margin-bottom: 0.25rem; }
-        .badge-name { font-weight: 700; font-size: 0.8rem; color: var(--primary); }
-        .badge-desc { font-size: 0.7rem; color: var(--text-light); margin-top: 0.2rem; }
+        .example-box { background: #fefcbf; border: 1px solid var(--warm-dark); border-radius: 6px; padding: 0.9rem; margin: 0.6rem 0; }
+        .example-step { display: flex; gap: 0.5rem; margin-bottom: 0.3rem; font-size: 0.85rem; }
+        .example-step::before { content: "•"; color: var(--primary); font-weight: bold; }
 
-        /* Exemple box */
-        .example-box {
-            background: linear-gradient(135deg, #fffff0 0%, #fefcbf 100%);
-            border: 1px solid var(--warm-dark);
-            border-radius: 6px;
-            padding: 0.9rem;
-            margin: 0.6rem 0;
-        }
-        .example-box-title {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-        .example-steps { counter-reset: step; font-size: 0.85rem; }
-        .example-step {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 0.4rem;
-            align-items: flex-start;
-        }
-        .example-step::before {
-            counter-increment: step;
-            content: counter(step);
-            background: var(--primary);
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
+        .intro-text { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem; font-style: italic; }
 
-        /* Pause */
-        .pause-banner {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 2rem;
-        }
-        .pause-banner h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-        }
-
-        /* Défis */
-        .challenge-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 0.75rem;
-            margin: 0.5rem 0;
-        }
-        .challenge-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1rem;
-            border-left: 4px solid var(--primary);
-        }
-        .challenge-card.optional {
-            border-left-color: var(--purple);
-            background: #faf5ff;
-        }
-        .challenge-number {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 24px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-        }
-        .challenge-card.optional .challenge-number { background: var(--purple); }
-        .challenge-title {
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-        .challenge-desc { font-size: 0.85rem; color: var(--text); }
-
-        /* Print */
         @media print {
             .tile-content, .subtile-content { display: block !important; }
             .tile-chevron, .subtile-chevron { display: none; }
-        }
-
-        .intro-text {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-            font-style: italic;
+            .part-content { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -491,423 +246,133 @@
 
 <header class="header">
     <h1>Formation IA en éducation</h1>
-    <div class="subtitle">Niveau initiés • 3 heures</div>
+    <div class="subtitle">DRANE PACA • Niveau initiés • 3 heures</div>
 </header>
 
 <div class="container">
 
-<!-- ==================== PARTIE 1 ==================== -->
 <div class="part-header">
     <div class="part-number">1</div>
     <div class="part-title">Ancrage et cadrage</div>
 </div>
 <div class="part-content">
 
-    <!-- Ice-breaker -->
     <div class="tile">
         <div class="tile-header" onclick="toggleTile(this)">
             <span class="tile-icon">🎯</span>
-            <span class="tile-title">Ice-breaker : partager les pratiques</span>
+            <span class="tile-title">Ice-breaker & Rappels</span>
             <span class="tile-chevron">▼</span>
         </div>
         <div class="tile-content">
-            <p class="intro-text">Valoriser l'expertise du groupe, créer une dynamique de partage.</p>
-            
+            <p class="intro-text">Valoriser l'expertise du groupe.</p>
             <div class="key-points">
-                <div class="key-point"><span class="key-point-icon">1️⃣</span><div><strong>Quel(s) outil(s)</strong> utilisez-vous ?</div></div>
-                <div class="key-point"><span class="key-point-icon">2️⃣</span><div><strong>Pour quoi faire ?</strong></div></div>
-                <div class="key-point"><span class="key-point-icon">3️⃣</span><div><strong>Un conseil de prompt</strong> à partager ?</div></div>
+                <div class="key-point"><div><strong>Quel(s) outil(s)</strong> utilisez-vous ?</div></div>
+                <div class="key-point"><div><strong>Pour quoi faire ?</strong></div></div>
             </div>
-
             <div class="subtile">
                 <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🔧</span> Rappel : les bases du prompt engineering
+                    <span>🔧</span> Rappel : Les bases du prompt
                     <span class="subtile-chevron">▼</span>
                 </div>
                 <div class="subtile-content">
                     <div class="key-points">
-                        <div class="key-point success"><span class="key-point-icon">🎭</span><div><strong>Rôle</strong> — "Tu es un professeur de SVT expert en..."</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🎯</span><div><strong>Contexte</strong> — Niveau élèves, objectifs, contraintes</div></div>
-                        <div class="key-point success"><span class="key-point-icon">📋</span><div><strong>Tâche</strong> — "Crée 5 questions QCM..."</div></div>
-                        <div class="key-point success"><span class="key-point-icon">📐</span><div><strong>Format</strong> — Tableau, liste, longueur</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🚫</span><div><strong>Contraintes</strong> — "Évite le jargon"</div></div>
+                        <div class="key-point success"><div><strong>Rôle / Contexte / Tâche / Format / Contraintes</strong></div></div>
                     </div>
-                    <div class="prompt-box">Tu es un <span class="variable">[RÔLE]</span> spécialisé en <span class="variable">[DOMAINE]</span>.<br>Contexte : <span class="variable">[NIVEAU, OBJECTIF]</span><br>Tâche : <span class="variable">[CE QUE TU VEUX]</span><br>Format : <span class="variable">[STRUCTURE]</span><br>Contraintes : <span class="variable">[LIMITES]</span></div>
-                    <div class="alert alert-info"><span class="alert-icon">💡</span><div><strong>Astuce</strong> : demander à l'IA de poser des questions avant de répondre.</div></div>
+                    <div class="prompt-box">Tu es un <span class="variable">[RÔLE]</span>. Contexte : <span class="variable">[NIVEAU]</span>. Tâche : <span class="variable">[ACTION]</span>.</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Encart Magistère -->
-    <div class="tile" style="border: 2px solid var(--purple); background: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);">
-        <div class="tile-header" onclick="toggleTile(this)" style="background: linear-gradient(135deg, #e9d8fd 0%, #d6bcfa 100%);">
+    <div class="tile" style="border: 2px solid var(--purple); background: #faf5ff;">
+        <div class="tile-header" onclick="toggleTile(this)" style="background: #e9d8fd;">
             <span class="tile-icon">🎓</span>
-            <span class="tile-title">Pour approfondir : parcours M@gistère</span>
+            <span class="tile-title">Parcours M@gistère DRANE PACA</span>
             <span class="tile-chevron">▼</span>
         </div>
         <div class="tile-content">
-            <div class="alert alert-success"><span class="alert-icon">📚</span><div>
-                <strong>Parcours de formation DRANE PACA</strong><br>
-                « Enseigner à l'heure des IA génératives »<br><br>
-                Ce parcours M@gistère sera accessible à tous les participants pour approfondir les notions abordées aujourd'hui.
-            </div></div>
-            <div class="resources-grid">
-                <a href="https://magistere.apps.education.fr" target="_blank" class="resource-link"><div class="resource-icon" style="background:var(--purple);">🎓</div><div><div class="resource-title">Accéder à M@gistère</div><div class="resource-desc">magistere.apps.education.fr</div></div></a>
+            <div class="alert alert-success">
+                <strong>« Enseigner à l'heure des IA génératives »</strong><br>
+                Disponible pour approfondir les notions.
             </div>
+            <a href="https://magistere.apps.education.fr" target="_blank" class="resource-link">
+                <div class="resource-icon" style="background:var(--purple);">🎓</div>
+                <div><div class="resource-title">Accéder à M@gistère</div></div>
+            </a>
         </div>
     </div>
 
-    <!-- Cadre ministériel -->
     <div class="tile">
         <div class="tile-header" onclick="toggleTile(this)">
             <span class="tile-icon">📜</span>
-            <span class="tile-title">Le cadre ministériel (juin 2025)</span>
+            <span class="tile-title">Cadre ministériel (Juin 2025)</span>
             <span class="tile-chevron">▼</span>
         </div>
         <div class="tile-content">
-            <div class="alert alert-info"><span class="alert-icon">📄</span><div><strong>Document de référence</strong> : <a href="https://eduscol.education.fr/document/57611/download" target="_blank" style="color:var(--primary);">"Cadre d'usage de l'IA en éducation"</a> (MEN, juin 2025)</div></div>
-
             <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>✅</span> Ce qui est AUTORISÉ
-                    <span class="subtile-chevron">▼</span>
-                </div>
+                <div class="subtile-header" onclick="toggleSubtile(this)"><span>✅</span> Autorisé / <span>🚫</span> Lignes rouges</div>
                 <div class="subtile-content">
                     <div class="key-points">
-                        <div class="key-point success"><span class="key-point-icon">👩‍🏫</span><div><strong>Usage professionnel</strong> — Préparation, évaluations, adaptation, correction</div></div>
-                        <div class="key-point success"><span class="key-point-icon">📚</span><div><strong>Usage pédagogique encadré</strong> — Dès la 4e, limité et accompagné</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🎓</span><div><strong>Au lycée : autonomie</strong> — Dans un cadre <em>explicitement défini</em></div></div>
-                        <div class="key-point success"><span class="key-point-icon">🔓</span><div><strong>Solutions libres privilégiées</strong></div></div>
+                        <div class="key-point success"><div>Usage pro & pédagogique encadré</div></div>
+                        <div class="key-point danger"><div><strong>Données personnelles</strong> : JAMAIS</div></div>
+                        <div class="key-point danger"><div><strong>Comptes élèves</strong> : INTERDITS sur IA grand public</div></div>
                     </div>
                 </div>
             </div>
-
             <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🚫</span> Les LIGNES ROUGES
-                    <span class="subtile-chevron">▼</span>
-                </div>
+                <div class="subtile-header" onclick="toggleSubtile(this)"><span>🏷️</span> Badges de transparence</div>
                 <div class="subtile-content">
-                    <div class="key-points">
-                        <div class="key-point danger"><span class="key-point-icon">🔒</span><div><strong>Données personnelles</strong> — JAMAIS dans outils grand public</div></div>
-                        <div class="key-point danger"><span class="key-point-icon">👤</span><div><strong>Création compte élève</strong> — INTERDITE sur services IA grand public</div></div>
-                        <div class="key-point danger"><span class="key-point-icon">🤖</span><div><strong>Décisions automatisées</strong> — Supervision humaine obligatoire</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>⚖️</span> Les OBLIGATIONS
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="key-points">
-                        <div class="key-point warning"><span class="key-point-icon">👁️</span><div><strong>Transparence</strong> — Signaler toute utilisation de l'IA</div></div>
-                        <div class="key-point warning"><span class="key-point-icon">🎓</span><div><strong>Formation PIX obligatoire</strong> — 4e, 2de, 1re année CAP</div></div>
-                        <div class="key-point warning"><span class="key-point-icon">✔️</span><div><strong>Vérification</strong> — Croiser avec d'autres sources</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🏷️</span> Badges de transparence : rendre l'usage visible
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p style="margin-bottom:0.75rem">Créer une culture de transparence avec des badges clairs :</p>
                     <div class="badges-grid">
-                        <div class="badge-card green">
-                            <div class="badge-icon">✍️</div>
-                            <div class="badge-name">100% Humain</div>
-                            <div class="badge-desc">Créé sans IA</div>
-                        </div>
-                        <div class="badge-card blue">
-                            <div class="badge-icon">🤝</div>
-                            <div class="badge-name">Co-construit</div>
-                            <div class="badge-desc">IA + travail humain significatif</div>
-                        </div>
-                        <div class="badge-card yellow">
-                            <div class="badge-icon">🔧</div>
-                            <div class="badge-name">Assisté</div>
-                            <div class="badge-desc">IA pour améliorer/corriger</div>
-                        </div>
-                        <div class="badge-card purple">
-                            <div class="badge-icon">📐</div>
-                            <div class="badge-name">Mis en forme</div>
-                            <div class="badge-desc">IA pour la forme uniquement</div>
-                        </div>
-                        <div class="badge-card orange">
-                            <div class="badge-icon">🤖</div>
-                            <div class="badge-name">Généré</div>
-                            <div class="badge-desc">IA majoritaire, vérifié humain</div>
-                        </div>
+                        <div class="badge-card green"><div class="badge-name">100% Humain</div></div>
+                        <div class="badge-card blue"><div class="badge-name">Co-construit</div></div>
+                        <div class="badge-card orange"><div class="badge-name">Généré IA</div></div>
                     </div>
-                    <div class="alert alert-success"><span class="alert-icon">💡</span><div><strong>Usage</strong> : à apposer sur les documents, travaux élèves, supports de cours. Encourage l'honnêteté plutôt que la dissimulation.</div></div>
                 </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>📝</span> Devoirs et évaluations
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="alert alert-danger"><span class="alert-icon">⚠️</span><div><strong>Fraude</strong> = utilisation sans autorisation ET sans appropriation</div></div>
-                    <div class="alert alert-warning"><span class="alert-icon">⚠️</span><div><strong>Détecteurs IA</strong> : NON recommandés (non fiables)</div></div>
-                    <p style="margin-top:0.5rem">→ <strong>Solution</strong> : adapter les modalités (oral, processus, portfolio...) et utiliser les badges</p>
-                </div>
-            </div>
-
             </div>
         </div>
     </div>
 
-    <!-- Compétences -->
     <div class="tile">
         <div class="tile-header" onclick="toggleTile(this)">
-            <span class="tile-icon">🎓</span>
-            <span class="tile-title">Compétences du 21e siècle et cadre AILit</span>
+            <span class="tile-icon">🧠</span>
+            <span class="tile-title">Compétences & Cadre AILit</span>
             <span class="tile-chevron">▼</span>
         </div>
         <div class="tile-content">
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🌍</span> Le cadre européen AILit (OCDE, mai 2025)
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p style="margin-bottom:0.5rem">Cadre de compétences IA pour le primaire et secondaire — base PISA 2029</p>
-                    <div class="key-points">
-                        <div class="key-point"><span class="key-point-icon">📐</span><div><strong>Intégration transversale</strong> dans toutes les disciplines</div></div>
-                        <div class="key-point"><span class="key-point-icon">🧠</span><div><strong>Au-delà du technique</strong> — Pensée critique, créativité, éthique</div></div>
-                        <div class="key-point"><span class="key-point-icon">🤝</span><div><strong>Co-création responsable</strong> — Utiliser, créer, réfléchir</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🎯</span> Les 4C : compétences clés
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="competence-grid">
-                        <div class="competence-item"><div class="competence-icon">💡</div><div class="competence-name">Créativité</div></div>
-                        <div class="competence-item"><div class="competence-icon">🔍</div><div class="competence-name">Esprit Critique</div></div>
-                        <div class="competence-item"><div class="competence-icon">💬</div><div class="competence-name">Communication</div></div>
-                        <div class="competence-item"><div class="competence-icon">🤝</div><div class="competence-name">Collaboration</div></div>
-                    </div>
-                    <p style="margin-top:0.5rem"><strong>L'IA comme levier</strong> : ces compétences sont AMPLIFIÉES et NÉCESSAIRES.</p>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🔗</span> Articulation avec les référentiels
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="key-points">
-                        <div class="key-point"><span class="key-point-icon">📊</span><div><strong>CRCN / PIX</strong> — Domaines 2, 3, 4</div></div>
-                        <div class="key-point"><span class="key-point-icon">📰</span><div><strong>EMI</strong> — Fiabilité, sources, manipulation</div></div>
-                        <div class="key-point"><span class="key-point-icon">🏛️</span><div><strong>EMC</strong> — Éthique, citoyenneté numérique</div></div>
-                    </div>
-                </div>
+            <p><strong>Cadre européen AILit (OCDE, 2025)</strong> : Intégration transversale et pensée critique.</p>
+            <div class="key-points" style="margin-top:0.5rem">
+                <div class="key-point"><div>Articulation PIX (Domaines 2, 3, 4) et EMI.</div></div>
             </div>
         </div>
     </div>
-
 </div>
 
-<!-- ==================== PARTIE 2 ==================== -->
 <div class="part-header">
     <div class="part-number">2</div>
     <div class="part-title">Cadres pédagogiques</div>
 </div>
 <div class="part-content">
 
-    <!-- Bloom -->
     <div class="tile">
         <div class="tile-header" onclick="toggleTile(this)">
             <span class="tile-icon">🔺</span>
-            <span class="tile-title">Taxonomie de Bloom revisitée pour l'IA</span>
+            <span class="tile-title">Bloom & SAMR revisités</span>
             <span class="tile-chevron">▼</span>
         </div>
         <div class="tile-content">
-            <div class="alert alert-info"><span class="alert-icon">🎯</span><div><strong>Objectif</strong> : viser les niveaux supérieurs — l'IA comme <strong>tremplin</strong>, pas béquille.</div></div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>📊</span> Tableau Bloom × IA
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="table-wrapper">
-                        <table>
-                            <thead><tr><th>Niveau</th><th>Sans IA</th><th>Avec IA (élève)</th><th>Avec IA (prof)</th></tr></thead>
-                            <tbody>
-                                <tr><td><span class="level-tag level-base">Mémoriser</span></td><td>Réciter</td><td>Flashcards, quiz</td><td>Exercices mémorisation</td></tr>
-                                <tr><td><span class="level-tag level-base">Comprendre</span></td><td>Reformuler</td><td>Explications alternatives</td><td>Adapter au niveau</td></tr>
-                                <tr><td><span class="level-tag level-mid">Appliquer</span></td><td>Exercices</td><td>Assistant résolution</td><td>Différenciation 3 niveaux</td></tr>
-                                <tr><td><span class="level-tag level-mid">Analyser</span></td><td>Comparer</td><td>⭐ <strong>Comparer 3 IA</strong></td><td>Corpus comparatifs</td></tr>
-                                <tr><td><span class="level-tag level-high">Évaluer</span></td><td>Juger</td><td>⭐ <strong>Détecter biais, erreurs</strong></td><td>Grilles critères</td></tr>
-                                <tr><td><span class="level-tag level-top">Créer</span></td><td>Produire</td><td>⭐ <strong>Co-création + validation</strong></td><td>Séquences innovantes</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Niveau</th><th>Avec IA (élève)</th><th>Plus-value</th></tr></thead>
+                    <tbody>
+                        <tr><td><span class="level-tag level-mid">Analyser</span></td><td>Comparer 3 IA</td><td>Forte</td></tr>
+                        <tr><td><span class="level-tag level-high">Évaluer</span></td><td>Détecter biais/erreurs</td><td>Critique</td></tr>
+                    </tbody>
+                </table>
             </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>💡</span> Exemple : de la béquille au tremplin
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="example-box">
-                        <div class="example-steps">
-                            <div class="example-step"><div><strong>Faible</strong> : demander à l'IA de rédiger → apprend peu</div></div>
-                            <div class="example-step"><div><strong>Intermédiaire</strong> : rédiger, demander des pistes → compare</div></div>
-                            <div class="example-step"><div><strong>Élevé</strong> : analyser réponse IA, identifier faiblesses, produire mieux, justifier → évalue et crée</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="alert alert-info">Viser la <strong>Modification (M)</strong> et la <strong>Redéfinition (R)</strong>.</div>
         </div>
     </div>
 
-    <!-- SAMR -->
-    <div class="tile">
-        <div class="tile-header" onclick="toggleTile(this)">
-            <span class="tile-icon">📊</span>
-            <span class="tile-title">Modèle SAMR appliqué à l'IA</span>
-            <span class="tile-chevron">▼</span>
-        </div>
-        <div class="tile-content">
-            <div class="alert alert-info"><span class="alert-icon">🎯</span><div><strong>Objectif</strong> : viser <strong>M</strong> et <strong>R</strong> pour vraie plus-value. Sinon, pourquoi l'IA ?</div></div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>📊</span> Tableau SAMR × IA
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="table-wrapper">
-                        <table>
-                            <thead><tr><th>Niveau</th><th>Description</th><th>Plus-value</th></tr></thead>
-                            <tbody>
-                                <tr><td><span class="level-tag level-base">S</span></td><td>Substitution — L'IA remplace un outil existant</td><td style="color:var(--text-light)">Faible</td></tr>
-                                <tr><td><span class="level-tag level-mid">A</span></td><td>Augmentation — L'IA améliore fonctionnellement</td><td>Modérée</td></tr>
-                                <tr><td><span class="level-tag level-high">M</span></td><td>Modification — La tâche est repensée</td><td><strong>Forte</strong></td></tr>
-                                <tr><td><span class="level-tag level-top">R</span></td><td>Redéfinition — Nouvelles tâches possibles</td><td><strong>Transformatrice</strong></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span style="background:#e2e8f0;padding:0.1rem 0.3rem;border-radius:3px;font-size:0.7rem;font-weight:600;">S</span> Substitution — Exemples concrets
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p style="margin-bottom:0.5rem;color:var(--text-light);font-style:italic;">L'IA remplace un outil, pas de transformation pédagogique.</p>
-                    <div class="key-points">
-                        <div class="key-point"><span class="key-point-icon">👩‍🏫</span><div><strong>Prof utilise</strong> : Mistral/ChatGPT pour traduire un texte au lieu du dictionnaire</div></div>
-                        <div class="key-point"><span class="key-point-icon">👩‍🏫</span><div><strong>Prof utilise</strong> : IA pour corriger l'orthographe d'un document</div></div>
-                        <div class="key-point"><span class="key-point-icon">🎓</span><div><strong>Élève utilise</strong> : Traducteur IA au lieu de Reverso (même tâche)</div></div>
-                    </div>
-                    <div class="alert alert-warning" style="margin-top:0.75rem"><span class="alert-icon">⚠️</span><div>À ce niveau, l'IA n'apporte pas de plus-value pédagogique réelle.</div></div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span style="background:#bee3f8;padding:0.1rem 0.3rem;border-radius:3px;font-size:0.7rem;font-weight:600;color:#2b6cb0;">A</span> Augmentation — Exemples concrets
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p style="margin-bottom:0.5rem;color:var(--text-light);font-style:italic;">L'IA améliore l'existant avec des fonctionnalités supplémentaires.</p>
-                    <div class="key-points">
-                        <div class="key-point"><span class="key-point-icon">👩‍🏫</span><div><strong>Prof utilise Diffit</strong> : adapter un texte à 3 niveaux de difficulté (élèves travaillent sur papier)</div></div>
-                        <div class="key-point"><span class="key-point-icon">👩‍🏫</span><div><strong>Prof utilise QuizWizard</strong> : générer un quiz avec feedback automatique</div></div>
-                        <div class="key-point"><span class="key-point-icon">👩‍🏫</span><div><strong>Prof utilise ChatGPT/Claude</strong> : créer des exercices différenciés</div></div>
-                        <div class="key-point"><span class="key-point-icon">🎓</span><div><strong>Élève utilise Mistral</strong> : demander des explications alternatives sur une notion</div></div>
-                        <div class="key-point"><span class="key-point-icon">🎓</span><div><strong>Élève utilise DuckDuckGo AI</strong> : obtenir un feedback sur sa production écrite</div></div>
-                    </div>
-                    <div class="tools-grid" style="margin-top:0.75rem">
-                        <div class="tool-card specialized"><div class="tool-name">Diffit</div><div class="tool-type">Différenciation</div></div>
-                        <div class="tool-card specialized"><div class="tool-name">QuizWizard</div><div class="tool-type">Quiz + feedback</div></div>
-                        <div class="tool-card european"><div class="tool-name">Mistral</div><div class="tool-type">Explications</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span style="background:#c6f6d5;padding:0.1rem 0.3rem;border-radius:3px;font-size:0.7rem;font-weight:600;color:#276749;">M</span> Modification — Exemples concrets ⭐
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p style="margin-bottom:0.5rem;color:var(--text-light);font-style:italic;">La tâche est fondamentalement repensée grâce à l'IA.</p>
-                    <div class="key-points">
-                        <div class="key-point success"><span class="key-point-icon">👩‍🏫</span><div><strong>Prof utilise NotebookLM</strong> : créer un podcast audio de synthèse que les élèves écoutent et analysent</div></div>
-                        <div class="key-point success"><span class="key-point-icon">👩‍🏫</span><div><strong>Prof utilise ChatGPT/Claude</strong> : générer un corpus de documents fictifs avec erreurs à identifier</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🎓</span><div><strong>Élèves comparent 3 IA</strong> : Mistral vs DuckDuckGo AI vs Qwant sur la même question → analyse critique</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🎓</span><div><strong>Élève utilise Mistral</strong> : soumettre sa rédaction, choisir/rejeter les suggestions, <em>justifier ses choix</em></div></div>
-                        <div class="key-point success"><span class="key-point-icon">🎓</span><div><strong>Groupe utilise IA</strong> : rôles différenciés (rédacteur/vérificateur/critique IA/synthétiseur)</div></div>
-                    </div>
-                    <div class="tools-grid" style="margin-top:0.75rem">
-                        <div class="tool-card specialized"><div class="tool-name">NotebookLM</div><div class="tool-type">Podcast, synthèse</div></div>
-                        <div class="tool-card european"><div class="tool-name">Mistral</div><div class="tool-type">Analyse critique</div></div>
-                        <div class="tool-card european"><div class="tool-name">DuckDuckGo AI</div><div class="tool-type">Comparaison</div></div>
-                    </div>
-                    <div class="alert alert-success" style="margin-top:0.75rem"><span class="alert-icon">✅</span><div><strong>Clé</strong> : l'élève développe son esprit critique, compare, évalue, justifie.</div></div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span style="background:#faf089;padding:0.1rem 0.3rem;border-radius:3px;font-size:0.7rem;font-weight:600;color:#975a16;">R</span> Redéfinition — Exemples concrets ⭐⭐
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p style="margin-bottom:0.5rem;color:var(--text-light);font-style:italic;">Des tâches nouvelles, impossibles sans l'IA.</p>
-                    <div class="key-points">
-                        <div class="key-point success"><span class="key-point-icon">🎓</span><div><strong>Élèves utilisent Didakbot</strong> : dialoguer avec un chatbot disciplinaire créé par le prof (histoire, sciences, philo...)</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🎓</span><div><strong>Élèves utilisent Mistral</strong> : simulation de négociation diplomatique (chaque groupe = un pays)</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🎓</span><div><strong>Élèves créent avec QuizWizard</strong> : produire des quiz pour leurs pairs, valider mutuellement</div></div>
-                        <div class="key-point success"><span class="key-point-icon">👩‍🏫</span><div><strong>Prof crée avec Didakbot</strong> : un chatbot "tuteur" sur une notion complexe, disponible en autonomie</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🎓</span><div><strong>Projet transversal</strong> : croiser plusieurs disciplines sur un thème (climat, santé...), l'IA aide à synthétiser</div></div>
-                    </div>
-                    <div class="tools-grid" style="margin-top:0.75rem">
-                        <div class="tool-card specialized"><div class="tool-name">Didakbot</div><div class="tool-type">Chatbot disciplinaire</div><div class="tool-badge purple">NovaPeda</div></div>
-                        <div class="tool-card specialized"><div class="tool-name">QuizWizard</div><div class="tool-type">Création par élèves</div></div>
-                        <div class="tool-card european"><div class="tool-name">Mistral</div><div class="tool-type">Simulation, rôles</div></div>
-                    </div>
-                    <div class="alert alert-info" style="margin-top:0.75rem"><span class="alert-icon">🚀</span><div><strong>À ce niveau</strong> : les élèves créent, collaborent, produisent pour d'autres — l'IA rend possible ce qui ne l'était pas.</div></div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🔗</span> Lien Didakbot
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="resources-grid">
-                        <a href="https://novapeda.eu/didakbot2" target="_blank" class="resource-link"><div class="resource-icon">🤖</div><div><div class="resource-title">Didakbot</div><div class="resource-desc">novapeda.eu/didakbot2 — Créer des chatbots disciplinaires</div></div></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Éco -->
     <div class="tile">
         <div class="tile-header" onclick="toggleTile(this)">
             <span class="tile-icon">🌱</span>
@@ -915,89 +380,21 @@
             <span class="tile-chevron">▼</span>
         </div>
         <div class="tile-content">
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>📊</span> Chiffres clés : l'impact environnemental de l'IA
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p style="margin-bottom:0.75rem;font-weight:600;color:var(--primary);">Consommation énergétique</p>
-                    <div class="key-points">
-                        <div class="key-point warning"><span class="key-point-icon">⚡</span><div><strong>×10</strong> — Une requête ChatGPT consomme environ 10 fois plus d'électricité qu'une recherche Google<br><em style="font-size:0.8rem;color:var(--text-light)">Source : Agence Internationale de l'Énergie (AIE), 2024</em></div></div>
-                        <div class="key-point warning"><span class="key-point-icon">🔌</span><div><strong>2% de l'électricité mondiale</strong> — Les data centers (IA, cloud, crypto) consommaient 460 TWh en 2022<br><em style="font-size:0.8rem;color:var(--text-light)">Source : AIE, 2024</em></div></div>
-                        <div class="key-point warning"><span class="key-point-icon">📈</span><div><strong>Explosion prévue</strong> — D'ici 2026, hausse de 160 à 590 TWh (= consommation de la Suède ou l'Allemagne)<br><em style="font-size:0.8rem;color:var(--text-light)">Source : AIE, 2024</em></div></div>
-                    </div>
-                    
-                    <p style="margin:1rem 0 0.75rem;font-weight:600;color:var(--primary);">Empreinte carbone</p>
-                    <div class="key-points">
-                        <div class="key-point warning"><span class="key-point-icon">🌍</span><div><strong>3 à 4%</strong> des émissions mondiales de GES proviennent du numérique (2,5% en France)<br><em style="font-size:0.8rem;color:var(--text-light)">Source : ADEME-ARCEP, 2023</em></div></div>
-                        <div class="key-point warning"><span class="key-point-icon">📊</span><div><strong>10% de l'électricité française</strong> est consommée par le numérique (équivalent de 8 millions de foyers)<br><em style="font-size:0.8rem;color:var(--text-light)">Source : ADEME-ARCEP, 2023</em></div></div>
-                        <div class="key-point warning"><span class="key-point-icon">🏢</span><div><strong>+48% d'émissions</strong> pour Google entre 2019 et 2023, +29% pour Microsoft — en grande partie à cause de l'IA<br><em style="font-size:0.8rem;color:var(--text-light)">Source : Rapports RSE Google et Microsoft, 2024</em></div></div>
-                    </div>
-
-                    <p style="margin:1rem 0 0.75rem;font-weight:600;color:var(--primary);">Consommation d'eau</p>
-                    <div class="key-points">
-                        <div class="key-point warning"><span class="key-point-icon">💧</span><div><strong>4 à 6 milliards de m³ d'eau</strong> — D'ici 2027, l'IA pourrait consommer autant d'eau que la consommation annuelle totale du Danemark<br><em style="font-size:0.8rem;color:var(--text-light)">Source : PNUE (Programme des Nations Unies pour l'Environnement), 2024</em></div></div>
-                    </div>
-
-                    <div class="alert alert-info" style="margin-top:1rem"><span class="alert-icon">🔗</span><div><strong>Pour aller plus loin</strong> : <a href="https://comparia.beta.gouv.fr" target="_blank" style="color:var(--primary);font-weight:600;">ComparIA</a> — Outil de l'État pour comparer l'impact environnemental des IA</div></div>
-                </div>
+            <div class="key-points">
+                <div class="key-point warning"><div><strong>x10</strong> : une requête consomme 10x plus qu'une recherche Google.</div></div>
+                <div class="key-point success"><div><strong>Frugalité</strong> : N'utiliser l'IA que si nécessaire.</div></div>
             </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>📜</span> Principe de frugalité (cadre ministériel)
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="alert alert-success"><span class="alert-icon">🌱</span><div><strong>Citation officielle</strong> : "L'IA ne doit être utilisée que si aucune autre solution moins coûteuse écologiquement ne répond au besoin."<br><em style="font-size:0.85rem">— Cadre d'usage de l'IA en éducation, MEN, juin 2025</em></div></div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>✅</span> Bonnes pratiques en classe
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="key-points">
-                        <div class="key-point success"><span class="key-point-icon">🤔</span><div><strong>Se poser la question</strong> — "Ai-je vraiment besoin de l'IA ? Une recherche web suffit-elle ?"</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🎯</span><div><strong>Prompts efficaces</strong> — Un bon prompt = moins de reformulations = moins de requêtes</div></div>
-                        <div class="key-point success"><span class="key-point-icon">👥</span><div><strong>Travail de groupe</strong> — 1 requête pour 4 élèves plutôt que 4 requêtes individuelles</div></div>
-                        <div class="key-point success"><span class="key-point-icon">📉</span><div><strong>Modèles adaptés</strong> — Utiliser des modèles légers quand c'est suffisant</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🔄</span><div><strong>Mutualiser</strong> — Partager les productions entre collègues plutôt que régénérer</div></div>
-                    </div>
-                    <p style="margin-top:0.75rem"><strong>En classe</strong> : systématiquement poser la question "Pourquoi l'IA ici ?" → développe la conscience environnementale ET l'esprit critique</p>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🔗</span> Sources officielles
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="resources-grid">
-                        <a href="https://comparia.beta.gouv.fr" target="_blank" class="resource-link"><div class="resource-icon">🇫🇷</div><div><div class="resource-title">ComparIA</div><div class="resource-desc">Comparer l'impact des IA (beta.gouv.fr)</div></div></a>
-                        <a href="https://www.notre-environnement.gouv.fr/actualites/breves/article/pour-une-intelligence-artificielle-plus-econome-en-energie-et-en-ressources" target="_blank" class="resource-link"><div class="resource-icon">🌿</div><div><div class="resource-title">IA économe en énergie</div><div class="resource-desc">notre-environnement.gouv.fr</div></div></a>
-                        <a href="https://www.entreprises.gouv.fr/decryptages-de-nos-experts/intelligence-artificielle-en-entreprise-quels-impacts-environnementaux" target="_blank" class="resource-link"><div class="resource-icon">🏢</div><div><div class="resource-title">Impacts environnementaux IA</div><div class="resource-desc">Direction Générale des Entreprises</div></div></a>
-                        <a href="https://unric.org/fr/intelligence-artificielle-quelle-quantite-denergie-lia-utilise-t-elle/" target="_blank" class="resource-link"><div class="resource-icon">🌍</div><div><div class="resource-title">Énergie et IA</div><div class="resource-desc">Nations Unies (PNUE)</div></div></a>
-                    </div>
-                </div>
-            </div>
+            <div class="alert alert-info" style="margin-top:0.5rem">Outil : <strong>ComparIA</strong> (beta.gouv.fr)</div>
         </div>
     </div>
-
 </div>
 
-<!-- ==================== PARTIE 3 ==================== -->
 <div class="part-header">
     <div class="part-number">3</div>
     <div class="part-title">Ateliers pratiques</div>
 </div>
 <div class="part-content">
 
-    <!-- Panorama outils -->
     <div class="tile">
         <div class="tile-header" onclick="toggleTile(this)">
             <span class="tile-icon">🛠️</span>
@@ -1005,385 +402,74 @@
             <span class="tile-chevron">▼</span>
         </div>
         <div class="tile-content">
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>💬</span> LLM / Chatbots
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p style="margin-bottom:0.5rem"><strong>Pour les profs</strong> (usage libre) :</p>
-                    <div class="tools-grid">
-                        <div class="tool-card"><div class="tool-name">Claude</div><div class="tool-type">Anthropic</div></div>
-                        <div class="tool-card"><div class="tool-name">ChatGPT</div><div class="tool-type">OpenAI</div></div>
-                        <div class="tool-card"><div class="tool-name">Gemini</div><div class="tool-type">Google</div></div>
-                        <div class="tool-card"><div class="tool-name">Copilot</div><div class="tool-type">Microsoft</div></div>
-                        <div class="tool-card"><div class="tool-name">Perplexity</div><div class="tool-type">Recherche</div></div>
-                    </div>
-                    <p style="margin:0.75rem 0 0.5rem"><strong>Pour la classe</strong> (sans compte, européens) :</p>
-                    <div class="tools-grid">
-                        <div class="tool-card european"><div class="tool-name">Mistral Le Chat</div><div class="tool-type">Chat IA</div><div class="tool-badge">🇫🇷</div></div>
-                        <div class="tool-card european"><div class="tool-name">DuckDuckGo AI</div><div class="tool-type">Chat anonyme</div><div class="tool-badge">🇪🇺</div></div>
-                        <div class="tool-card european"><div class="tool-name">Qwant</div><div class="tool-type">Recherche + IA</div><div class="tool-badge">🇫🇷</div></div>
-                        <div class="tool-card european"><div class="tool-name">HuggingChat</div><div class="tool-type">Open source</div><div class="tool-badge">🇫🇷</div></div>
-                    </div>
-                </div>
+            <p><strong>Pour la classe (RGPD / Souverains) :</strong></p>
+            <div class="tools-grid">
+                <div class="tool-card european"><div class="tool-name">Mistral Le Chat</div><div class="tool-badge">🇫🇷</div></div>
+                <div class="tool-card european"><div class="tool-name">DuckDuckGo AI</div><div class="tool-badge">🇪🇺</div></div>
+                <div class="tool-card european"><div class="tool-name">Qwant</div><div class="tool-badge">🇫🇷</div></div>
             </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🎯</span> Outils spécialisés pour l'enseignement
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="tools-grid">
-                        <div class="tool-card specialized"><div class="tool-name">NotebookLM</div><div class="tool-type">Synthèse, podcast</div><div class="tool-badge purple">Google</div></div>
-                        <div class="tool-card specialized"><div class="tool-name">Gamma</div><div class="tool-type">Présentations</div><div class="tool-badge purple">Diaporamas</div></div>
-                        <div class="tool-card specialized"><div class="tool-name">QuizWizard</div><div class="tool-type">Quiz automatiques</div><div class="tool-badge purple">Évaluation</div></div>
-                        <div class="tool-card specialized"><div class="tool-name">NovaPeda</div><div class="tool-type">Générateur prompts</div><div class="tool-badge purple">🇫🇷 Éduc</div></div>
-                        <div class="tool-card specialized"><div class="tool-name">Didakbot</div><div class="tool-type">Chatbot disciplinaire</div><div class="tool-badge purple">🇫🇷 NovaPeda</div></div>
-                        <div class="tool-card specialized"><div class="tool-name">MagicSchool</div><div class="tool-type">Suite pédagogique</div><div class="tool-badge purple">Complet</div></div>
-                        <div class="tool-card specialized"><div class="tool-name">Diffit</div><div class="tool-type">Différenciation</div><div class="tool-badge purple">Niveaux</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🖼️</span> Génération d'images (sans compte)
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="tools-grid">
-                        <div class="tool-card european"><div class="tool-name">Craiyon</div><div class="tool-type">Images</div><div class="tool-badge">Sans compte</div></div>
-                        <div class="tool-card european"><div class="tool-name">Perchance AI</div><div class="tool-type">Images</div><div class="tool-badge">Sans compte</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🔗</span> Liens directs
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="resources-grid">
-                        <a href="https://chat.mistral.ai/" target="_blank" class="resource-link"><div class="resource-icon">💬</div><div><div class="resource-title">Mistral Le Chat</div><div class="resource-desc">chat.mistral.ai</div></div></a>
-                        <a href="https://duckduckgo.com/chat" target="_blank" class="resource-link"><div class="resource-icon">🦆</div><div><div class="resource-title">DuckDuckGo AI</div><div class="resource-desc">duckduckgo.com/chat</div></div></a>
-                        <a href="https://notebooklm.google/" target="_blank" class="resource-link"><div class="resource-icon">📓</div><div><div class="resource-title">NotebookLM</div><div class="resource-desc">notebooklm.google</div></div></a>
-                        <a href="https://gamma.app/" target="_blank" class="resource-link"><div class="resource-icon">🎨</div><div><div class="resource-title">Gamma</div><div class="resource-desc">gamma.app</div></div></a>
-                        <a href="https://www.quizwizard.ai/" target="_blank" class="resource-link"><div class="resource-icon">❓</div><div><div class="resource-title">QuizWizard</div><div class="resource-desc">quizwizard.ai</div></div></a>
-                        <a href="https://novapeda.eu/genprompt" target="_blank" class="resource-link"><div class="resource-icon">🇫🇷</div><div><div class="resource-title">NovaPeda</div><div class="resource-desc">novapeda.eu/genprompt</div></div></a>
-                        <a href="https://novapeda.eu/didakbot2" target="_blank" class="resource-link"><div class="resource-icon">🤖</div><div><div class="resource-title">Didakbot</div><div class="resource-desc">novapeda.eu/didakbot2</div></div></a>
-                        <a href="https://huggingface.co/chat/" target="_blank" class="resource-link"><div class="resource-icon">🤗</div><div><div class="resource-title">HuggingChat</div><div class="resource-desc">huggingface.co/chat</div></div></a>
-                        <a href="https://www.craiyon.com/" target="_blank" class="resource-link"><div class="resource-icon">🖼️</div><div><div class="resource-title">Craiyon</div><div class="resource-desc">craiyon.com</div></div></a>
-                    </div>
-                </div>
+            <p style="margin-top:1rem"><strong>Spécialisés :</strong></p>
+            <div class="tools-grid">
+                <div class="tool-card specialized"><div class="tool-name">NotebookLM</div></div>
+                <div class="tool-card specialized"><div class="tool-name">QuizWizard</div></div>
+                <div class="tool-card specialized"><div class="tool-name">Didakbot</div><div class="tool-badge">DRANE</div></div>
             </div>
         </div>
     </div>
 
-    <!-- Défis pratiques -->
     <div class="tile">
         <div class="tile-header" onclick="toggleTile(this)">
             <span class="tile-icon">🚀</span>
-            <span class="tile-title">Défis pratiques : à vous de jouer !</span>
+            <span class="tile-title">Défis pratiques</span>
             <span class="tile-chevron">▼</span>
         </div>
         <div class="tile-content">
-            <div class="alert alert-info"><span class="alert-icon">🎯</span><div>Choisir <strong>2-3 défis</strong> à explorer. Travailler seul ou en binôme. Objectif : repartir avec des ressources concrètes.</div></div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>1️⃣</span> Défi : Explorer un nouveau LLM
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p class="intro-text">Sortir de sa zone de confort, comparer les réponses.</p>
-                    <div class="key-points">
-                        <div class="key-point"><span class="key-point-icon">🎯</span><div>Choisir un LLM que vous n'utilisez <strong>jamais</strong></div></div>
-                        <div class="key-point"><span class="key-point-icon">📝</span><div>Poser la <strong>même question</strong> qu'à votre outil habituel</div></div>
-                        <div class="key-point"><span class="key-point-icon">🔍</span><div>Comparer : qualité, ton, longueur, erreurs éventuelles</div></div>
-                    </div>
-                    <div class="example-box">
-                        <div class="example-box-title">💡 Idée de test</div>
-                        <p>"Explique [notion de ta discipline] à un élève de [niveau] qui a des difficultés"</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>2️⃣</span> Défi : Tester un outil spécialisé
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p class="intro-text">Découvrir des outils pensés pour l'enseignement.</p>
-                    <div class="key-points">
-                        <div class="key-point purple"><span class="key-point-icon">📓</span><div><strong>NotebookLM</strong> — Importer 2-3 docs, générer une synthèse ou un podcast</div></div>
-                        <div class="key-point purple"><span class="key-point-icon">🎨</span><div><strong>Gamma</strong> — Créer un diaporama à partir d'un texte</div></div>
-                        <div class="key-point purple"><span class="key-point-icon">❓</span><div><strong>QuizWizard</strong> — Générer un quiz à partir d'un document</div></div>
-                        <div class="key-point purple"><span class="key-point-icon">🇫🇷</span><div><strong>NovaPeda</strong> — Utiliser le générateur de prompts pédagogiques</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>3️⃣</span> Défi : Créer une ressource pédagogique
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p class="intro-text">Produire quelque chose d'utilisable dès demain.</p>
-                    <div class="key-points">
-                        <div class="key-point success"><span class="key-point-icon">📝</span><div><strong>Quiz avec feedback</strong> — 8-10 questions, explications pour chaque réponse</div></div>
-                        <div class="key-point success"><span class="key-point-icon">📊</span><div><strong>Exercices différenciés</strong> — 3 niveaux sur une même notion</div></div>
-                        <div class="key-point success"><span class="key-point-icon">📖</span><div><strong>Texte adapté</strong> — Simplifier un document pour élèves en difficulté</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🎥</span><div><strong>Tutoriel</strong> — Guide pas-à-pas pour une compétence</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🃏</span><div><strong>Flashcards</strong> — Jeu de révision sur un chapitre</div></div>
-                    </div>
-                    <div class="prompt-box">Tu es un professeur de <span class="variable">[DISCIPLINE]</span>. Crée <span class="variable">[TYPE DE RESSOURCE]</span> sur <span class="variable">[NOTION]</span> pour des élèves de <span class="variable">[NIVEAU]</span>.<br><br>Contraintes : <span class="variable">[DURÉE, FORMAT, NIVEAU DE DIFFICULTÉ]</span></div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>4️⃣</span> Défi : Créer ses badges de transparence
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p class="intro-text">Instaurer une culture de l'honnêteté dans les usages.</p>
-                    <div class="badges-grid">
-                        <div class="badge-card green">
-                            <div class="badge-icon">✍️</div>
-                            <div class="badge-name">100% Humain</div>
-                        </div>
-                        <div class="badge-card blue">
-                            <div class="badge-icon">🤝</div>
-                            <div class="badge-name">Co-construit</div>
-                        </div>
-                        <div class="badge-card yellow">
-                            <div class="badge-icon">🔧</div>
-                            <div class="badge-name">Assisté IA</div>
-                        </div>
-                        <div class="badge-card purple">
-                            <div class="badge-icon">📐</div>
-                            <div class="badge-name">Mis en forme</div>
-                        </div>
-                        <div class="badge-card orange">
-                            <div class="badge-icon">🤖</div>
-                            <div class="badge-name">Généré IA</div>
-                        </div>
-                    </div>
-                    <div class="key-points" style="margin-top:0.75rem">
-                        <div class="key-point"><span class="key-point-icon">🎨</span><div>Créer vos propres visuels (Canva, PowerPoint...)</div></div>
-                        <div class="key-point"><span class="key-point-icon">📋</span><div>Définir les critères pour chaque niveau avec vos élèves</div></div>
-                        <div class="key-point"><span class="key-point-icon">📝</span><div>Intégrer dans le règlement de classe / charte d'usage</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>5️⃣</span> Défi : Concevoir une activité en classe
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <p class="intro-text">Imaginer une séance intégrant l'IA, supervisée par l'enseignant.</p>
-                    <div class="alert alert-warning"><span class="alert-icon">🌱</span><div><strong>Contraintes</strong> : penser travail de groupe (mutualiser les requêtes) + souci écologique (limiter le nombre de prompts)</div></div>
-                    
-                    <div class="key-points">
-                        <div class="key-point"><span class="key-point-icon">🔍</span><div><strong>Analyse critique</strong> — Comparer réponses de 2-3 IA sur une question disciplinaire</div></div>
-                        <div class="key-point"><span class="key-point-icon">✍️</span><div><strong>Écriture collaborative</strong> — Rédiger → améliorer avec IA → justifier les choix</div></div>
-                        <div class="key-point"><span class="key-point-icon">👥</span><div><strong>Rôles dans le groupe</strong> — Rédacteur / Vérificateur / Critique IA / Synthétiseur</div></div>
-                        <div class="key-point"><span class="key-point-icon">🎓</span><div><strong>Création pour les pairs</strong> — Quiz, fiches de révision validées par le groupe</div></div>
-                    </div>
-
-                    <div class="example-box">
-                        <div class="example-box-title">💡 Exemple : "Enquête comparative" (1h, groupe de 4)</div>
-                        <div class="example-steps">
-                            <div class="example-step"><div>Chaque groupe reçoit une question disciplinaire</div></div>
-                            <div class="example-step"><div>1 élève interroge Mistral, 1 autre DuckDuckGo AI (2 requêtes max)</div></div>
-                            <div class="example-step"><div>Le groupe compare, vérifie avec le manuel/sources fiables</div></div>
-                            <div class="example-step"><div>Production : tableau comparatif + verdict argumenté</div></div>
-                            <div class="example-step"><div>Badge de transparence : "Co-construit avec IA"</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>⭐</span> Défis bonus
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="key-points">
-                        <div class="key-point purple"><span class="key-point-icon">🎭</span><div><strong>Simulation de dialogue</strong> — Faire "parler" un personnage historique, un auteur, un scientifique</div></div>
-                        <div class="key-point purple"><span class="key-point-icon">🔄</span><div><strong>Détection d'erreurs</strong> — Générer volontairement un texte avec erreurs, les élèves corrigent</div></div>
-                        <div class="key-point purple"><span class="key-point-icon">📊</span><div><strong>Data storytelling</strong> — Transformer des données en récit avec l'IA</div></div>
-                        <div class="key-point purple"><span class="key-point-icon">🌍</span><div><strong>Projet interdisciplinaire</strong> — Croiser plusieurs matières sur un thème (climat, santé...)</div></div>
-                    </div>
-                </div>
+            <div class="key-points">
+                <div class="key-point success"><div><strong>Défi 1</strong> : Comparer Mistral et DuckDuckGo AI.</div></div>
+                <div class="key-point success"><div><strong>Défi 2</strong> : Générer un quiz sur QuizWizard.</div></div>
+                <div class="key-point success"><div><strong>Défi 3</strong> : Créer une activité "Analyse critique" pour les élèves.</div></div>
             </div>
         </div>
     </div>
-
 </div>
 
-<!-- ==================== PARTIE 4 ==================== -->
 <div class="part-header">
     <div class="part-number">4</div>
     <div class="part-title">Synthèse et ressources</div>
 </div>
 <div class="part-content">
 
-    <!-- Synthèse -->
     <div class="tile">
         <div class="tile-header" onclick="toggleTile(this)">
-            <span class="tile-icon">✅</span>
+            <span class="tile-icon">📚</span>
+            <span class="tile-title">Liens utiles</span>
+            <span class="tile-chevron">▼</span>
+        </div>
+        <div class="tile-content">
+            <div class="resources-grid">
+                <a href="https://chat.mistral.ai/" target="_blank" class="resource-link"><div class="resource-icon">💬</div><div><div class="resource-title">Mistral Le Chat</div></div></a>
+                <a href="https://duckduckgo.com/chat" target="_blank" class="resource-link"><div class="resource-icon">🦆</div><div><div class="resource-title">DuckDuckGo AI</div></div></a>
+                <a href="https://notebooklm.google/" target="_blank" class="resource-link"><div class="resource-icon">📓</div><div><div class="resource-title">NotebookLM</div></div></a>
+                <a href="https://novapeda.eu/didakbot2" target="_blank" class="resource-link"><div class="resource-icon">🤖</div><div><div class="resource-title">Didakbot</div></div></a>
+                <a href="https://comparia.beta.gouv.fr" target="_blank" class="resource-link"><div class="resource-icon">🌱</div><div><div class="resource-title">ComparIA</div></div></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="tile">
+        <div class="tile-header" onclick="toggleTile(this)">
+            <span class="tile-icon">⚠️</span>
             <span class="tile-title">Points de vigilance</span>
             <span class="tile-chevron">▼</span>
         </div>
         <div class="tile-content">
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🎓</span> Pédagogique
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="key-points">
-                        <div class="key-point success"><span class="key-point-icon">✓</span><div>L'IA <strong>au service</strong> des apprentissages</div></div>
-                        <div class="key-point success"><span class="key-point-icon">✓</span><div>Viser <strong>Bloom élevés</strong></div></div>
-                        <div class="key-point success"><span class="key-point-icon">✓</span><div>Viser <strong>SAMR M et R</strong></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>⚖️</span> Juridique
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="key-points">
-                        <div class="key-point danger"><span class="key-point-icon">✗</span><div><strong>Pas de données personnelles</strong></div></div>
-                        <div class="key-point danger"><span class="key-point-icon">✗</span><div><strong>Pas de compte élève</strong></div></div>
-                        <div class="key-point warning"><span class="key-point-icon">!</span><div><strong>Transparence</strong> obligatoire → badges</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🧭</span> Éthique
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="key-points">
-                        <div class="key-point warning"><span class="key-point-icon">⚠️</span><div><strong>Biais</strong> : reproduction et amplification</div></div>
-                        <div class="key-point warning"><span class="key-point-icon">⚠️</span><div><strong>Fiabilité</strong> : hallucinations, toujours vérifier</div></div>
-                        <div class="key-point warning"><span class="key-point-icon">⚠️</span><div><strong>Esprit critique permanent</strong></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🌱</span> Écologique
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="key-points">
-                        <div class="key-point success"><span class="key-point-icon">🌍</span><div><strong>Usage frugal</strong> : seulement si nécessaire</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🌍</span><div><strong>Mutualiser</strong> : travail de groupe, partage entre collègues</div></div>
-                        <div class="key-point success"><span class="key-point-icon">🌍</span><div><strong>Prompts efficaces</strong> : moins de reformulations</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>📝</span> Évaluatif
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="key-points">
-                        <div class="key-point"><span class="key-point-icon">💡</span><div><strong>Repenser modalités</strong> : oral, processus, portfolio</div></div>
-                        <div class="key-point"><span class="key-point-icon">💡</span><div><strong>Évaluer le raisonnement</strong></div></div>
-                        <div class="key-point"><span class="key-point-icon">💡</span><div><strong>Intégrer l'IA</strong> + exiger les badges</div></div>
-                    </div>
-                </div>
+            <div class="key-points">
+                <div class="key-point danger"><div>Zéro donnée personnelle.</div></div>
+                <div class="key-point warning"><div>Vérification systématique (Hallucinations).</div></div>
+                <div class="key-point success"><div>Privilégier les modèles frugaux.</div></div>
             </div>
         </div>
     </div>
-
-    <!-- Ressources -->
-    <div class="tile">
-        <div class="tile-header" onclick="toggleTile(this)">
-            <span class="tile-icon">📚</span>
-            <span class="tile-title">Ressources institutionnelles</span>
-            <span class="tile-chevron">▼</span>
-        </div>
-        <div class="tile-content">
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🎓</span> Formation M@gistère
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="resources-grid">
-                        <a href="https://magistere.apps.education.fr" target="_blank" class="resource-link" style="border-color:var(--purple);background:#faf5ff;"><div class="resource-icon" style="background:var(--purple);">🎓</div><div><div class="resource-title">M@gistère — DRANE PACA</div><div class="resource-desc">« Enseigner à l'heure des IA génératives »</div></div></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🇫🇷</span> Cadre national
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="resources-grid">
-                        <a href="https://eduscol.education.fr/document/57611/download" target="_blank" class="resource-link"><div class="resource-icon">📄</div><div><div class="resource-title">Cadre d'usage IA (juin 2025)</div><div class="resource-desc">MEN — Document officiel</div></div></a>
-                        <a href="https://www.cnil.fr/fr/intelligence-artificielle-et-algorithmes" target="_blank" class="resource-link"><div class="resource-icon">🔒</div><div><div class="resource-title">IA et données personnelles</div><div class="resource-desc">CNIL</div></div></a>
-                        <a href="https://pix.fr/" target="_blank" class="resource-link"><div class="resource-icon">📊</div><div><div class="resource-title">PIX</div><div class="resource-desc">Certification compétences numériques</div></div></a>
-                        <a href="https://comparia.beta.gouv.fr" target="_blank" class="resource-link"><div class="resource-icon">🌱</div><div><div class="resource-title">ComparIA</div><div class="resource-desc">Comparer l'impact des IA (beta.gouv.fr)</div></div></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>🇪🇺</span> Cadre européen
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="resources-grid">
-                        <a href="https://ailiteracyframework.org/fr/" target="_blank" class="resource-link"><div class="resource-icon">🎓</div><div><div class="resource-title">AILit Framework</div><div class="resource-desc">OCDE / Commission EU</div></div></a>
-                        <a href="https://ailiteracyframework.org/wp-content/uploads/2025/05/AILitFramework_ReviewDraft.pdf" target="_blank" class="resource-link"><div class="resource-icon">📥</div><div><div class="resource-title">Cadre AILit (PDF)</div><div class="resource-desc">Draft</div></div></a>
-                        <a href="https://unesdoc.unesco.org/ark:/48223/pf0000389901" target="_blank" class="resource-link"><div class="resource-icon">🌍</div><div><div class="resource-title">UNESCO - IA générative</div><div class="resource-desc">Orientations</div></div></a>
-                        <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=OJ:L_202401689" target="_blank" class="resource-link"><div class="resource-icon">⚖️</div><div><div class="resource-title">Règlement européen IA</div><div class="resource-desc">EUR-Lex</div></div></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subtile">
-                <div class="subtile-header" onclick="toggleSubtile(this)">
-                    <span>📖</span> Autres formations
-                    <span class="subtile-chevron">▼</span>
-                </div>
-                <div class="subtile-content">
-                    <div class="resources-grid">
-                        <a href="https://www.fun-mooc.fr/fr/cours/intelligence-artificielle-pour-et-par-les-enseignants-ai4t/" target="_blank" class="resource-link"><div class="resource-icon">🎥</div><div><div class="resource-title">MOOC AI4T</div><div class="resource-desc">FUN-MOOC</div></div></a>
-                        <a href="https://www.fun-mooc.fr/fr/cours/lintelligence-artificielle-avec-intelligence/" target="_blank" class="resource-link"><div class="resource-icon">🎥</div><div><div class="resource-title">L'IA avec intelligence</div><div class="resource-desc">Inria / Class'Code</div></div></a>
-                        <a href="https://eduscol.education.fr/document/56106/download" target="_blank" class="resource-link"><div class="resource-icon">📰</div><div><div class="resource-title">Lettre ÉduNum IA</div><div class="resource-desc">Eduscol</div></div></a>
-                        <a href="https://edunumrech.hypotheses.org/9593" target="_blank" class="resource-link"><div class="resource-icon">🔬</div><div><div class="resource-title">GTnum #Scol_IA</div><div class="resource-desc">Recherche et éducation</div></div></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 </div>
